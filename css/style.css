@@ -1,0 +1,261 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	text-rendering: optimizeSpeed;
+}
+
+img,
+picture {
+	max-width: 100%;
+	display: block;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+a {
+	text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+:root {
+	font-size: 15px;
+	--ff-primary: 'Lexend Deca', sans-serif;
+	--ff-accent: 'Big Shoulders Display', cursive;
+	--fw-normal: 400;
+	--fw-bold: 700;
+
+	--clr-orange: hsl(31, 77%, 52%);
+	--clr-cyan: hsl(184, 100%, 22%);
+	--clr-dark-cyan: hsl(179, 100%, 13%);
+
+	--clr-neutral-100: hsla(0, 0%, 100%, 0.75);
+	--clr-neutral-200: hsl(0, 0%, 95%);
+
+	--bd-rad: 1em;
+}
+
+/* //////////////////////////////////////////////// */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Lexend+Deca&display=swap');
+/* font-family: 'Big Shoulders Display', cursive; - bold 700 */
+/* font-family: 'Lexend Deca', sans-serif; 400*/
+
+/* //////////////////////////////////////////////// */
+*::before,
+*::after {
+	content: "";
+	z-index: -1;
+}
+
+body {
+	background-color: var(--clr-neutral-200);
+	font-family: var(--ff-primary);
+	display: grid;
+}
+
+.container {
+	margin-inline: auto;
+	width: min(92rem, 100% - 2rem);
+}
+
+.column-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	margin-block: 2rem;
+}
+
+.card {
+	color: var(--clr-neutral-100);
+	display: flex;
+	flex-direction: column;
+}
+
+.card:first-child {
+	border-radius: var(--bd-rad) var(--bd-rad) 0 0;
+}
+
+.card:last-child {
+	border-radius: 0 0 var(--bd-rad) var(--bd-rad);
+}
+
+.card-content {
+	padding-block: min(5vh, 3rem);
+	padding-inline: min(10vw, 3rem);
+
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+}
+
+.card-image {
+	margin-block-end: 2.25rem;
+	max-width: 4.6rem;
+}
+
+.card-title {
+	color: var(--clr-neutral-200);
+	font-size: 1.5rem;
+	font-weight: var(--fw-bold);
+	text-transform: uppercase;
+
+	margin-block-end: 2.25rem;
+}
+
+.card-description {
+	line-height: 1.25;
+	margin-block-end: 2rem;
+}
+
+.button {
+	text-transform: capitalize;
+	text-align: center;
+	color: var(--clr-neutral-200);
+	border-radius: 100vh;
+	background-color: var(--clr-neutral-200);
+	padding-block: 1em;
+	padding-inline: 1.5em;
+
+	transition: all 750ms;
+	max-width: 10rem;
+}
+
+
+.button:hover {
+	outline: 1px var(--clr-neutral-200) solid;
+	background-color: transparent;
+	color: var(--clr-neutral-100);
+}
+
+.button:active {
+	background-color: rgb(228, 227, 227);
+	color: gray;
+}
+
+.card-sedans {
+	background-color: var(--clr-orange);
+	grid-column-start: 1;
+}
+
+:where(.card-sedans) .button {
+	color: var(--clr-orange);
+}
+
+.card-suvs {
+	background-color: var(--clr-cyan);
+}
+
+:where(.card-suvs) .button {
+	color: var(--clr-cyan);
+}
+
+.card-luxury {
+	background-color: var(--clr-dark-cyan);
+}
+
+:where(.card-luxury) .button {
+	color: var(--clr-dark-cyan);
+}
+
+@media(min-width:40rem) {
+	body {
+		place-items: center;
+	}
+
+	.card:first-child {
+		border-radius: var(--bd-rad) 0 0 0;
+	}
+
+	.card:nth-child(2) {
+		border-radius: 0 var(--bd-rad) var(--bd-rad) 0;
+	}
+
+	.card:last-child {
+		border-radius: 0 0 var(--bd-rad) var(--bd-rad);
+	}
+}
+
+@media(min-width:58rem) {
+	.column-grid {
+		grid-template-columns: repeat(3, minmax(20rem, 1fr));
+	}
+
+	.card {
+		min-height: 33rem;
+	}
+
+	.card-title {
+		font-size: 3rem;
+	}
+
+	.card-description {
+		font-size: 1.5rem;
+	}
+
+	.card:first-child {
+		border-radius: var(--bd-rad) 0 0 var(--bd-rad);
+	}
+
+	.card:nth-child(2) {
+		border-radius: 0 0 0 0;
+	}
+
+	.card:last-child {
+		border-radius: 0 var(--bd-rad) var(--bd-rad) 0;
+	}
+
+	.card-description {
+		margin-block-end: auto;
+	}
+}
